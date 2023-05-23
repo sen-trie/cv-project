@@ -4,7 +4,6 @@ class PortfolioTextbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        id: props.id,
         position: '',
         company: '',
         startDate: '',
@@ -15,15 +14,15 @@ class PortfolioTextbox extends Component {
 
   deleteSelf = () => {
     const { onDelete } = this.props;
+    this.props.onSegmentChange(this.props.id, this.props.title , '');
     onDelete();
   };
 
   handleInputChange = (event) => {
     const { id, value } = event.target;
-    this.setState({ [id]: value });
-    this.props.onSegmentChange(this.state);
-
-    // console.log(this.state)
+    this.setState({ [id]: value },() => {
+      this.props.onSegmentChange(this.props.id, this.props.title , this.state);
+    });
   }
 
   render() {

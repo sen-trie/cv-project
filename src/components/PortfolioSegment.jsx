@@ -11,10 +11,6 @@ class PortfolioSegment extends Component {
     };
   }
 
-  // onTextSegmentChange = (value) => {
-  //   this.props.onSegmentChange(value)
-  // }
-
   addComponent = () => {
     const { title } = this.props;
     const { components, nextId } = this.state;

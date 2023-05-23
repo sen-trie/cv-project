@@ -20,8 +20,9 @@ class PortfolioHead extends Component {
     const reader = new FileReader();
     reader.onload = () => {
       const blob = new Blob([reader.result], { type: file.type });
-      this.setState({ selectedImage: URL.createObjectURL(blob) });
-      this.props.onHeadChange(this.state);
+      this.setState({ selectedImage: URL.createObjectURL(blob) },() => {
+        this.props.onHeadChange(this.state);
+      });
     };
     reader.readAsArrayBuffer(file);
     
@@ -29,8 +30,10 @@ class PortfolioHead extends Component {
 
   handleInputChange = (event) => {
     const { id, value } = event.target;
-    this.setState({ [id]: value });
-    this.props.onHeadChange(this.state);
+    this.setState({ [id]: value },() => {
+      this.props.onHeadChange(this.state);
+    });
+    
   };
 
   render() {

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import PortfolioHead from './components/PortfolioHead';
@@ -9,23 +9,55 @@ import PortfolioSkill from './components/PortfolioSkill';
 function App() {
   const [paragraphs, setParagraphs] = useState([]);
   const [head, setHead] = useState({});
-  const [education, setEducation] = useState({});
-  const [experience, setExperience] = useState({});
+  const [segment, setSegment] = useState({});
   
   const onParagraphsChange = (value) => {
     setParagraphs(value);
+
+    
   };
+
+  // useEffect(()=>{
+    
+  // },[paragraphs])
 
   const onHeadChange = (value) => {
     setHead(value);
   };
 
-  const onTextSegmentChange = (value) => {
-    setExperience(value)
+  const onTextSegmentChange = (id, title, value) => {
+    if (value === '') {
+      setSegment(prevSegment => {
+        const updatedSegment = { ...prevSegment };
+        if (updatedSegment[title]) {
+          delete updatedSegment[title][id];
+          if (Object.keys(updatedSegment[title]).length === 0) {
+            delete updatedSegment[title];
+          }
+        }
+        return updatedSegment;
+      });
+    } else {
+      setSegment(prevSegment => ({
+        ...prevSegment,
+        [title]: {
+          ...prevSegment[title],
+          [id]: value,
+        },
+      }));
+    }
   }
 
-  const handleSubmit = ()=> {
-    console.log(experience);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setSegment(prevSegment => ({...prevSegment}));
+    setHead(prevHead => ({...prevHead}));
+    setParagraphs(prevParagraphs => [...prevParagraphs]);
+    
+    console.log(head)
+    console.log(paragraphs)
+    console.log(segment)
   }
 
   return (
@@ -36,6 +68,7 @@ function App() {
           <PortfolioHead onHeadChange={onHeadChange}></PortfolioHead>
           <PortfolioSegment title="Education" onSegmentChange={onTextSegmentChange}></PortfolioSegment>
           <PortfolioSegment title="Experience" onSegmentChange={onTextSegmentChange}></PortfolioSegment>
+          {/* Idea: Merge PortfolioSegments */}
           <PortfolioSkill title="Skills" onParagraphsChange={onParagraphsChange}>
           </PortfolioSkill>
         </div>
