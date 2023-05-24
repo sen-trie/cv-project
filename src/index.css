@@ -73,7 +73,7 @@ code {
   width: 100%;
 }
 
-.portfolio {
+.portfolio, .preview {
   background-color: green;
   flex-grow: 1;
   height: 100%;
@@ -213,4 +213,14 @@ input[type="file"] {
 
 .PortfolioSkill > div:last-of-type > * {
   margin-bottom: 0.5%;
+}
+
+.previewSegment > p {
+  margin-right: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

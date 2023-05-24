@@ -33,7 +33,6 @@ class PortfolioHead extends Component {
     this.setState({ [id]: value },() => {
       this.props.onHeadChange(this.state);
     });
-    
   };
 
   render() {
@@ -60,10 +59,10 @@ class PortfolioHead extends Component {
         </div>
         <div className='flex-column'>
           <input type="text" id="address" value={address} placeholder='Address' onChange={this.handleInputChange}/>
-          <input type="text" id="email" value={email} placeholder='Email' onChange={this.handleInputChange}/>
-          <input type="text" id="phone" value={phone} placeholder='Phone' onChange={this.handleInputChange}/>
-          <input type="text" id="linkedin" value={linkedin} placeholder='LinkedIn' onChange={this.handleInputChange}/>
-          <input type="text" id="github" value={github} placeholder='Github' onChange={this.handleInputChange}/>
+          <input type="email" id="email" value={email} placeholder='Email' onChange={this.handleInputChange}/>
+          <input type="number" id="phone" value={phone} placeholder='Phone' onChange={this.handleInputChange}/>
+          <input type="url" id="linkedin" value={linkedin} placeholder='LinkedIn' onChange={this.handleInputChange}/>
+          <input type="url" id="github" value={github} placeholder='Github' onChange={this.handleInputChange}/>
         </div>
       </div>
     );
