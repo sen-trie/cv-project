@@ -17,15 +17,17 @@ class PortfolioHead extends Component {
 
   handleImageUpload = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      const blob = new Blob([reader.result], { type: file.type });
-      this.setState({ selectedImage: URL.createObjectURL(blob) },() => {
-        this.props.onHeadChange(this.state);
-      });
-    };
-    reader.readAsArrayBuffer(file);
-    
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const blob = new Blob([reader.result], { type: file.type });
+        this.setState({ selectedImage: URL.createObjectURL(blob) },() => {
+          this.props.onHeadChange(this.state);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    } 
   };
 
   handleInputChange = (event) => {
@@ -44,7 +46,7 @@ class PortfolioHead extends Component {
           {selectedImage ? (
             <img className="image-preview" src={selectedImage} alt=''/>
           ) : (
-            <div className="image-placeholder">Upload Image</div>
+            <div className="image-placeholder flex-column">Upload Image</div>
           )}
         <input
             id="upload-input"

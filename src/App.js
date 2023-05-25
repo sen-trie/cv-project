@@ -6,8 +6,12 @@ import Preview from './components/Preview';
 import PortfolioHead from './components/PortfolioHead';
 import PortfolioSegment from './components/PortfolioSegment';
 import PortfolioSkill from './components/PortfolioSkill';
+
 import { Font } from '@react-pdf/renderer';
-import Roboto from './fonts/Roboto-Regular.ttf'
+import Roboto from './fonts/Roboto-Regular.ttf';
+import RobotoBold from './fonts/Roboto-Bold.ttf';
+import RobotoLight from './fonts/Roboto-Light.ttf';
+import RobotoThin from './fonts/Roboto-Thin.ttf';
 
 Font.register({
   family: 'Roboto',
@@ -15,6 +19,21 @@ Font.register({
     {
       format: "truetype",
       src: Roboto,
+    },
+    {
+      format: "truetype",
+      src: RobotoBold,
+      fontWeight: 'bold'
+    },
+    {
+      format: "truetype",
+      src: RobotoLight,
+      fontWeight: 'light'
+    },
+    {
+      format: "truetype",
+      src: RobotoThin,
+      fontWeight: 'thin'
     },
   ]
 });
@@ -96,7 +115,7 @@ function App() {
   return (
     <div className="App flex-column">
       <Header />
-      <form onSubmit={handleSubmit} className='main flex-row' noValidate>
+      <form onSubmit={handleSubmit} className='main flex-row' id='cv-form' noValidate>
         <div className='portfolio' style={visibleStyle}>
           <PortfolioHead onHeadChange={onHeadChange}></PortfolioHead>
           <PortfolioSegment title="Education" onSegmentChange={onTextSegmentChange}></PortfolioSegment>

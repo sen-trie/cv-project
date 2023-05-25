@@ -12,6 +12,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --bg-veryblack: #111111;
+  --bg-black: #2f2f2f;
+  --bg-grey: #b7b7b7;
+  --bg-lightgrey: #d6d5d5;
+  --bg-darkgrey: #868686;
+  --bg-white: #eaeaea;
+  --bg-blue: #6ab1c1;
+  --bg-darkblue: #486a70;
+}
+
 html {
   overflow-x: hidden;
   overflow-y: auto;
@@ -44,28 +55,70 @@ code {
   flex-direction: column;
 }
 
+button, input, textarea, .upload-image, .Sidebar > button {
+  font: inherit;
+  border-radius: 0.2em;
+  transition: 0.2s ease;
+}
+
+button:hover, input[type='color'], .upload-image {
+  cursor: pointer;
+}
+
+button:hover, .Sidebar > button:hover {
+  background-color: var(--bg-lightgrey);
+  filter: drop-shadow(0 0 0.1em rgb(0, 0, 0));
+}
+
 /* INDIVIDUAL STYLES */
 .Header {
   width: 100%;
-  background-color: yellow;
-  padding: 1% 2% 1% 2%;
+  background-color: var(--bg-black);
+  color:white;
+  height: 6vh;
+  min-height: 6vh;
+  filter: drop-shadow(0 0 0.2em black);
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .Sidebar {
   height: 100%;
   font-size: 1.2em;
-  background-color: pink;
+  background-color: var(--bg-blue);
+  border-left: 0.2em solid var(--bg-darkblue);
   padding: 1.5%;
   gap: calc(0.5rem + 2px);
   justify-content: flex-start;
   box-sizing: border-box;
+  width: 20vw;
+}
+
+.Sidebar > button {
+  min-width: 40%;
+  padding: 3%;
+  font: inherit;
+  background-color: var(--bg-white);
+  color: var(--bg-veryblack);
+}
+
+.Sidebar > div {
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 5% 0 5%;
+  box-sizing: border-box;
 }
 
 .Sidebar > p {
-  background-color: white;
+  border: 0.1em solid var(--bg-darkblue);
+  border-radius: 0.5em;
+  background-color: var(--bg-white);
+  color: var(--bg-black);
   padding: 1%;
   box-sizing: border-box;
   width: 100%;
+  font-size: 1.3em;
+  filter: drop-shadow(0 0.1em 0.1em rgba(0, 0, 0, 0.500));
 }
 
 .main {
@@ -74,28 +127,39 @@ code {
 }
 
 .portfolio, .preview {
-  background-color: green;
+  background-color: var(--bg-white);
   flex-grow: 1;
   height: 100%;
   padding: 1%;
   box-sizing: border-box;
+  color: var(--bg-veryblack);
+}
+
+.preview {
+  padding: 0;
 }
 
 .portfolio > div {
   margin-bottom: 1%;
   padding: 1%;
+  border-radius: 1em;
+  filter: drop-shadow(0 0.2em 0.1em rgba(0, 0, 0, 0.750));
 }
 
 .PortfolioHead {
   gap: 2rem;
-  background-color: aqua;
+  background-color: var(--bg-grey);
 }
 
 .upload-image {
-  background-color: pink;
+  background-color: white;
   width: 10%;
   aspect-ratio: 1;
   position: relative;
+}
+
+.upload-image > .image-placeholder {
+  height: 100%;
 }
 
 .image-preview {
@@ -143,7 +207,7 @@ input[type="file"] {
 }
 
 .PortfolioSegment,.PortfolioSkill {
-  background-color: peru;
+  background-color: var(--bg-grey);
   position: relative;
 }
 
@@ -154,6 +218,8 @@ input[type="file"] {
   font-size: 2em;
   text-align: left;
   justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 1% 0.2% 1%;
 }
 
 .PortfolioSegment > div:first-of-type > p {
@@ -162,6 +228,13 @@ input[type="file"] {
 
 .PortfolioSegment > div:first-of-type > button {
   padding: 0.5rem;
+  font-size: 1rem;
+  width: fit-content;
+  justify-content: space-evenly;
+}
+
+.PortfolioSegment > div:first-of-type > button > svg {
+  margin-right: 0.3em;
 }
 
 .PortfolioTextbox {
@@ -209,6 +282,7 @@ input[type="file"] {
 .PortfolioSkill > div:last-of-type {
   width: 90%;
   text-align: left;
+  font-size: 1.3em;
 }
 
 .PortfolioSkill > div:last-of-type > * {
@@ -219,8 +293,7 @@ input[type="file"] {
   margin-right: 10px;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

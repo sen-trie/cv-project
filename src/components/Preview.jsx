@@ -45,7 +45,7 @@ class Preview extends Component {
         <>
         {detailArray.map((key) => (
           headData[key] && (
-            <Text key={key}>
+            <Text key={key} style={{ fontWeight: 'light' }}>
               {key.charAt(0).toUpperCase() + key.slice(1)}: {headData[key]}
             </Text>
           )
@@ -74,11 +74,11 @@ class Preview extends Component {
             {keys.map((key) => (
               <View key={key} style={{ padding: 15, paddingTop: 10 }}>
                 <View style={{ display:'flex', flexDirection: 'row', justifyContent:'space-between' }}>
-                    <Text style={{  }}>{data[key]['position']}</Text>
-                    <Text>{data[key]['startDate']} - {data[key]['endDate']}</Text>
+                    <Text style={{ fontWeight: 'bold' }}>{data[key]['position']}</Text>
+                    <Text style={{ fontWeight: 'thin' }}>{data[key]['startDate']} - {data[key]['endDate']}</Text>
                 </View>
                 <Text>{data[key]['company']}</Text>
-                <Text>{data[key]['desc']}</Text>
+                <Text style={{ padding:'1%' }}>{data[key]['desc']}</Text>
               </View>
             ))}
         </div>
@@ -101,10 +101,10 @@ class Preview extends Component {
         <Document>
           <Page size="A4" style={this.styles.page}>
             <View>
-              <View style={[this.styles.section, { flexDirection: 'row', justifyContent: 'space-between', gap:'0.2in', backgroundColor:this.topColor }]}>
+              <View style={[this.styles.section, { flexDirection: 'row', justifyContent: 'space-between', gap: '0.2in', backgroundColor: this.topColor }]}>
                 {this.renderImage()}
                 <View style={{ flex: 1, display:'flex'}}>
-                  <Text>{headData.name}</Text>
+                  <Text style={{ fontWeight: 'bold' }}>{headData.name}</Text>
                   {this.personalInfo()}
                 </View>
               </View>
@@ -113,7 +113,7 @@ class Preview extends Component {
                 <Text>{'\n'}</Text>
                 {this.renderDivs()}
                 <View>
-                  {paragraphData.length > 0 && <Text style={this.styles.seperator}>Skills</Text>}
+                  {paragraphData.length > 0 && <Text style={[this.styles.seperator]}>Skills</Text>}
                   {paragraphData.length > 0 &&
                     <View style={{ padding: 15, paddingTop: 10 }}>
                       {paragraphData.map((item, index) => (

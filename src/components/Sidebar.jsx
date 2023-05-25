@@ -44,6 +44,7 @@ class Sidebar extends Component {
           <input type="color" name='bottomTextColor' onChange={this.handleBottomTextChange} defaultValue='#000000'></input>
         </div>
         <p>Notes</p>
+        <h3>After changing options, remember to toggle {"\n"} between 'Preview' and 'Edit' to refresh the changes!</h3>
       </div>
     );
   }
