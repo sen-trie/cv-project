@@ -57,7 +57,7 @@ class PortfolioHead extends Component {
         </label>
         <div className='flex-column'>
           <input type="text" id="name" value={name} placeholder='Input name' onChange={this.handleInputChange}></input>
-          <textarea  rows='6' id="bio" value={bio} placeholder='Bio about yourself' onChange={this.handleInputChange}></textarea>
+          <textarea rows='6' id="bio" value={bio} placeholder='Bio about yourself' onChange={this.handleInputChange}></textarea>
         </div>
         <div className='flex-column'>
           <input type="text" id="address" value={address} placeholder='Address' onChange={this.handleInputChange}/>

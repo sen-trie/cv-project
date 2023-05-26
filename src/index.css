@@ -55,9 +55,16 @@ code {
   flex-direction: column;
 }
 
-button, input, textarea, .upload-image, .Sidebar > button {
+button, input, textarea, .upload-image {
   font: inherit;
   border-radius: 0.2em;
+}
+
+textarea {
+  min-height:100px;
+}
+
+button, .Sidebar > button {
   transition: 0.2s ease;
 }
 
@@ -80,6 +87,17 @@ button:hover, .Sidebar > button:hover {
   filter: drop-shadow(0 0 0.2em black);
   font-size: 1.5em;
   font-weight: bold;
+}
+
+.Footer {
+  width: 100%;
+  background-color: #00000082;
+  color:white;
+  font-size: 1.1em;
+}
+
+.Footer > p {
+  margin: 0.3em;
 }
 
 .Sidebar {
@@ -130,7 +148,7 @@ button:hover, .Sidebar > button:hover {
   background-color: var(--bg-white);
   flex-grow: 1;
   height: 100%;
-  padding: 1%;
+  padding: 2%;
   box-sizing: border-box;
   color: var(--bg-veryblack);
 }
@@ -214,7 +232,7 @@ input[type="file"] {
 .PortfolioSegment > div:first-of-type,.PortfolioSkill > p:first-of-type{
   margin-bottom: 2%;
   width: 100%;
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.075em solid black;
   font-size: 2em;
   text-align: left;
   justify-content: space-between;
